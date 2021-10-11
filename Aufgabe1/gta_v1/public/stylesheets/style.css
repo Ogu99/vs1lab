@@ -46,8 +46,6 @@ a {
 
 /* ### TODO ### Styles for other HTML elements */
 
-/* ... your code here ... */
-
 
 /* Grid styles (no changes required) */
 
@@ -118,6 +116,9 @@ a {
 
 
 /* ### TODO ### Styles for Tagging component */
+.main__tagging {
+  
+}
 
 /* ... your code here ... */
 

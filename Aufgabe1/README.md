@@ -164,8 +164,8 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
 
 ### Teil A: Formulare fertigstellen
 
-- [ ] `Input` Elemente im Tagging- und Discovery-Formular ergänzen
-  - [ ] Felder im Tagging Formular: `latitude`, `longitude`, `name` und `hashtag`
+- [X] `Input` Elemente im Tagging- und Discovery-Formular ergänzen
+  - [X] Felder im Tagging Formular: `latitude`, `longitude`, `name` und `hashtag`
   - [ ] Felder im Discovery Formular: `searchterm` sowie `latitude` und `longitude` als versteckte Eingaben
   - [ ] Eindeutige `id` Attribute für die Felder
   - [ ] Für alle Felder jeweils ein `label`
