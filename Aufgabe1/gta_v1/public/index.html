@@ -35,14 +35,16 @@
                         pattern="(-?\d+)(\.\d+)?"
                         
                         minlength=1
-                        required>
+                        required
+                        readonly>
 
                     <label form="tag-form">Longitude:</label>
                     <input type="text" form="tag-form" id="in_longitude" 
                         placeholder="e.g. 8.390071"
                         pattern="(-?\d+)(\.\d+)?"
                         minlength=1
-                        required>
+                        required
+                        readonly>
 
                     <label form="tag-form">Name:</label>
                     <input type="text" form="tag-form" id="in_name" 
@@ -79,7 +81,7 @@
                         pattern="#?[a-z]+"
                         minlength=1
                         required>
-                    
+
                     <input type="text" form="discovery__search" id="search_latitude" hidden>
                     <input type="text" form="discovery__search" id="search_longitude" hidden>
                     <input type="submit" value="Search">
