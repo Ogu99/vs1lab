@@ -107,8 +107,27 @@ a {
 
 /* ### TODO ### Styles for Header Component */
 
-/* ... your code here ... */
+.header {
+  background-color:lightgray;
+  display: flex;
+  padding: 100px;
+}
 
+.header__image {
+  width: 45px;
+  height: 45px;
+  margin: auto;
+  margin-left: 20px;
+}
+
+.header__title {
+  margin: auto;
+}
+
+.header__navigation {
+  margin: auto;
+  margin-right: 20px;
+}
 
 /* ### TODO ### Styles for Main Component */
 
@@ -117,7 +136,7 @@ a {
 
 /* ### TODO ### Styles for Tagging component */
 .main__tagging {
-  
+  display: inline-flex;
 }
 
 /* ... your code here ... */
@@ -130,7 +149,10 @@ a {
 
 /* ### TODO ### Styles for Footer Component */
 
-/* ... your code here ... */
+.footer {
+  background-color: lightgray;
+  padding: 100px;
+}
 
 
 /* ### TODO ### Media Queries */
