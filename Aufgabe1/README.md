@@ -183,7 +183,7 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
 - [ ] Layout als verschachteltes zweispaltiges Grid realisieren
   - [ ] Klassen `.row` und `.col-x` verwenden
 - [ ] Seitengestaltung
-  - [ ] Farbig abgesetzte Header- und Footer-Bereiche
+  - [X] Farbig abgesetzte Header- und Footer-Bereiche
   - [ ] Vertikale Anordnung der Eingaben im Tagging Formular
   - [ ] Größere Boxen für die Eingaben aller Formulare
   - [ ] Discovery Ergebnisliste mit farbigen Boxen
