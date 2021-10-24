@@ -46,6 +46,70 @@ a {
 
 /* ### TODO ### Styles for other HTML elements */
 
+ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  flex-direction: column;
+
+  color: var(--link-color);
+  font-weight: bold;
+}
+
+li{
+  display:flex;
+  height:70px;
+  padding: 15px;
+  padding-left: 15px;
+  background:var(--background-color);
+  border: 1px solid var(--border-color);
+  margin-top: 15px;
+}
+
+input {
+  width: 200px;
+  height: 30px;
+
+  margin-right: 1.5rem;
+  margin-left: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+input[type="submit"] {
+  margin: 1rem;
+  margin-left: 0.5rem;
+  border-radius: 0%;
+  border: 1px solid var(--border-color);
+ 
+}
+
+label {
+  margin: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+fieldset.main__tagging__fieldset {
+  margin-top: 1rem;
+  margin-right: 0;
+}
+
+fieldset.main__discovery__fieldset {
+  margin-top: 1rem;
+}
+
+label {
+  color: var(--gray-color);
+}
+
+legend {
+  font-weight: bold;
+  margin: 1rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
 /* Grid styles (no changes required) */
 
 .row {
@@ -103,62 +167,108 @@ a {
   width: calc(100% - 1rem);
 }
 
-
 /* ### TODO ### Styles for Header Component */
 
 .header {
-  background-color:lightgray;
   display: flex;
-  padding: 100px;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  background-color:var(--background-color);
+  height: 150px;
+  margin-bottom: 3rem;
+  border: 1px solid var(--border-color);
 }
 
 .header__image {
   width: 45px;
   height: 45px;
   margin: auto;
-  margin-left: 20px;
+  margin-left: 3rem;
 }
 
 .header__title {
   margin: auto;
+  text-align: center;
 }
 
 .header__navigation {
   margin: auto;
-  margin-right: 20px;
+  margin-right: 3rem;
 }
 
 /* ### TODO ### Styles for Main Component */ 
 
 .main {
+  width: 70%;
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
 /* ### TODO ### Styles for Tagging component */
 .main__tagging {
-  display: inline-flex;
 }
 
 .main__tagging__fieldset {
-  display: flex;
+  display:flex;
   flex-direction: column;
 }
 
 
 /* ### TODO ### Styles for Discovery component */
 
-/* ... your code here ... */
+.main__discovery {
+}
 
+.main__discovery__fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.discovery__map {
+  display: flex;
+  flex-direction: column;
+  max-width: 438px;
+  max-height: 381px;
+  margin-top: 15px;
+}
 
 /* ### TODO ### Styles for Footer Component */
 
 .footer {
-  background-color: lightgray;
-  padding: 100px;
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  border: 1px solid var(--border-color);
 }
 
 
-/* ### TODO ### Media Queries */
+@media only screen and (max-width:966px) {
+  .main__discovery, .main__tagging {
+    width: 100%;
+  }
 
-/* ... your code here ... */
+  .main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width:600px) {
+  .discovery__map, .discovery__taglist {
+    width: 100%;
+  }
+
+  .discovery__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}

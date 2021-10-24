@@ -164,7 +164,7 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
 
 ### Teil A: Formulare fertigstellen
 
-- [ ] `Input` Elemente im Tagging- und Discovery-Formular ergänzen
+- [X] `Input` Elemente im Tagging- und Discovery-Formular ergänzen
   - [X] Felder im Tagging Formular: `latitude`, `longitude`, `name` und `hashtag`
   - [X] Felder im Discovery Formular: `searchterm` sowie `latitude` und `longitude` als versteckte Eingaben
   - [X] Eindeutige `id` Attribute für die Felder
@@ -184,7 +184,7 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
   - [ ] Klassen `.row` und `.col-x` verwenden
 - [ ] Seitengestaltung
   - [X] Farbig abgesetzte Header- und Footer-Bereiche
-  - [ ] Vertikale Anordnung der Eingaben im Tagging Formular
+  - [X] Vertikale Anordnung der Eingaben im Tagging Formular
   - [ ] Größere Boxen für die Eingaben aller Formulare
   - [ ] Discovery Ergebnisliste mit farbigen Boxen
 - [ ] Responsives Verhalten

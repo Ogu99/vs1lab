@@ -3,7 +3,6 @@
 <!-- File origin: VS1LAB A1a -->
 
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,28 +20,31 @@
         </nav>
     </header>
 
-    <main class="main">
-        <section class="main__tagging tagging">
+    <main class="main row">
+        <section class="main__tagging tagging col-4">
             <!-- ############### VS1Lab 1a Form 1 Start -->
             <form id="tag-form" action="/tagging" method="post">
                 <h2>Tagging</h2>
-                <fieldset class="main__tagging__fieldset">
+                <fieldset class="main__tagging__fieldset row">
                     <legend>Add a new GeoTag</legend>
+
                     <label form="tag-form">Latitude:</label>
                     <input type="text" form="tag-form" id="in_latitude"
+                        value=49.01379
                         placeholder="e.g. 49.01379"
                         pattern="(-?\d+)(\.\d+)?"
                         minlength=1
                         required
-                        readonly>
+                        disabled>
 
                     <label form="tag-form">Longitude:</label>
                     <input type="text" form="tag-form" id="in_longitude" 
                         placeholder="e.g. 8.390071"
+                        value=8.390071
                         pattern="(-?\d+)(\.\d+)?"
                         minlength=1
                         required
-                        readonly>
+                        disabled>
 
                     <label form="tag-form">Name:</label>
                     <input type="text" form="tag-form" id="in_name" 
@@ -66,11 +68,11 @@
 
         </section>
 
-        <section class="main__discovery discovery">
+        <section class="main__discovery discovery col-8">
             <!-- ############### VS1Lab 1a Form 2 Start -->
             <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
-                <h2 class="discovery__title">Discovery</h2>
-                <fieldset>
+                <h2>Discovery</h2>
+                <fieldset class="main__discovery__fieldset">
                     <legend>Search</legend>
                     <label form="discovery__search">Search term or keywords:</label>
                     <input type="text" form="discovery__search" id="in_search_key" 
@@ -86,15 +88,15 @@
             </form>
             <!-- ############### VS1Lab 1a Form 2 End -->
 
-            <div class="discovery__wrapper">
-                <div class="discovery__taglist">
+            <div class="discovery__wrapper row">
+                <div class="discovery__taglist col-5">
                     <ul class="discovery__results" id="discoveryResults">
                         <li>Castle (49.01379, 8.404435) #sight</li>
                         <li>IWI (49.01379, 8.390071) #edu</li>
                     </ul>
                 </div>
 
-                <div class="discovery__map">
+                <div class="discovery__map col-7">
                     <img src="./images/mapview.jpg" alt="a map with locations" id="mapView" />
                     <span>Result map</span>
                 </div>
