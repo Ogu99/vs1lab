@@ -1,0 +1,268 @@
+/*
+  File origin: VS1LAB A1b  
+
+  CSS style is BEM. Classes used for CSS, IDs for JavaScript querying (future use).
+  CSS variables used for clarity and themability (e.g. through SSR). 
+  Inherited box sizing used for ease of including 3rd party content-box components.
+*/
+
+/* Global styling */
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  /* This approach prevents issues with 3rd party content-box components */
+  box-sizing: inherit;
+}
+
+
+/* Variables (example: see declaration for "a" below) */
+
+:root {
+  --link-color: #00B7FF;
+  --background-color: #efefef;
+  --border-color: #cdcdcd;
+  --gray-color: #666;
+}
+
+
+/* HTML element styles */
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--link-color);
+}
+
+/* ### TODO ### Styles for other HTML elements */
+
+ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  flex-direction: column;
+
+  color: var(--link-color);
+  font-weight: bold;
+}
+
+li{
+  display:flex;
+  height:70px;
+  padding: 15px;
+  padding-left: 15px;
+  background:var(--background-color);
+  border: 1px solid var(--border-color);
+  margin-top: 15px;
+}
+
+input {
+  width: 200px;
+  height: 30px;
+
+  margin-right: 1.5rem;
+  margin-left: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+input[type="submit"] {
+  margin: 1rem;
+  margin-left: 0.5rem;
+  border-radius: 0%;
+  border: 1px solid var(--border-color);
+ 
+}
+
+label {
+  margin: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+fieldset.main__tagging__fieldset {
+  margin-top: 1rem;
+  margin-right: 0;
+}
+
+fieldset.main__discovery__fieldset {
+  margin-top: 1rem;
+}
+
+label {
+  color: var(--gray-color);
+}
+
+legend {
+  font-weight: bold;
+  margin: 1rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+/* Grid styles (no changes required) */
+
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.col-1 {
+  width: calc(8.33% - 1rem);
+}
+
+.col-2 {
+  width: calc(16.66% - 1rem);
+}
+
+.col-3 {
+  width: calc(25% - 1rem);
+}
+
+.col-4 {
+  width: calc(33.33% - 1rem);
+}
+
+.col-5 {
+  width: calc(41.66% - 1rem);
+}
+
+.col-6 {
+  width: calc(50% - 1rem);
+}
+
+.col-7 {
+  width: calc(58.33% - 1rem);
+}
+
+.col-8 {
+  width: calc(66.66% - 1rem);
+}
+
+.col-9 {
+  width: calc(75% - 1rem);
+}
+
+.col-10 {
+  width: calc(83.33% - 1rem);
+}
+
+.col-11 {
+  width: calc(91.66% - 1rem);
+}
+
+.col-12 {
+  width: calc(100% - 1rem);
+}
+
+/* ### TODO ### Styles for Header Component */
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  background-color:var(--background-color);
+  height: 150px;
+  margin-bottom: 3rem;
+  border: 1px solid var(--border-color);
+}
+
+.header__image {
+  width: 45px;
+  height: 45px;
+  margin: auto;
+  margin-left: 3rem;
+}
+
+.header__title {
+  margin: auto;
+  text-align: center;
+}
+
+.header__navigation {
+  margin: auto;
+  margin-right: 3rem;
+}
+
+/* ### TODO ### Styles for Main Component */ 
+
+.main {
+  width: 70%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ### TODO ### Styles for Tagging component */
+.main__tagging__fieldset {
+  display:flex;
+  flex-direction: column;
+}
+
+
+/* ### TODO ### Styles for Discovery component */
+
+.main__discovery__fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.discovery__map {
+  display: flex;
+  flex-direction: column;
+  max-width: 438px;
+  max-height: 381px;
+  margin-top: 15px;
+}
+
+/* ### TODO ### Styles for Footer Component */
+
+.footer {
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  border: 1px solid var(--border-color);
+}
+
+
+@media only screen and (max-width:966px) {
+  .main__discovery, .main__tagging {
+    width: 100%;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width:600px) {
+  .discovery__map, .discovery__taglist {
+    width: 100%;
+  }
+
+  .discovery__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
