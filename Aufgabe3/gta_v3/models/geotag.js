@@ -11,8 +11,36 @@
  */
 class GeoTag {
 
-    // TODO: ... your code here ...
+    #latitude = '';
+
+    get latitude() {
+        return this.#latitude;
+    }
+
+    #longitude = '';
     
+    get longitude() {
+        return this.#longitude;
+    }
+
+    #hashtag = '';
+    
+    get hashtag() {
+        return this.#hashtag;
+    }
+
+    #name = '';
+
+    get name() {
+        return this.#name;
+    }
+
+    constructor(latitude, longitude, name, hashtag) {
+        this.#name = name;
+        this.#latitude = latitude;
+        this.#longitude = longitude;
+        this.#hashtag = hashtag;
+    }
 }
 
 module.exports = GeoTag;

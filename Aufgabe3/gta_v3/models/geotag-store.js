@@ -1,5 +1,7 @@
 // File origin: VS1LAB A3
 
+const GeoTag = require("./geotag");
+
 /**
  * This script is a template for exercise VS1lab/Aufgabe3
  * Complete all TODOs in the code documentation.
@@ -25,8 +27,32 @@
  */
 class InMemoryGeoTagStore{
 
-    // TODO: ... your code here ...
+    #geotags = [];
 
+    /**
+     * Adds the given geotag to the storage.
+     * 
+     * @param {*} geotag the geotag to add.
+     */
+    addGeoTag(geotag) {
+        this.#geotags.push(geotag);
+    }
+
+    /**
+     * Removes the given geotag object from the storage.
+     * 
+     * @param {*} geotag the geotag to remove from the storage. 
+     */
+    removeGeoTag(geotag) {
+        const index = this.#geotags.indexOf(geotag);
+        if (index > -1) {
+            this.#geotags.splice(index, 1);
+        }
+    }
+
+    getNearbyGeoTags(location) {
+        
+    }
 }
 
 module.exports = InMemoryGeoTagStore
