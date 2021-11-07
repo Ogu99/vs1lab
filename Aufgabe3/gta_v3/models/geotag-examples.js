@@ -12,8 +12,6 @@
  * 
  */
 class GeoTagExamples {
-    mem = require('./geotag-store');
-
     /**
      * Provides some geoTag data
      */

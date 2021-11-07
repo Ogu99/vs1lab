@@ -32,25 +32,25 @@
                     <legend>Add a new GeoTag</legend>
 
                     <label form="tag-form">Latitude:</label>
-                    <input type="text" form="tag-form" id="in_latitude"
+                    <input type="text" name="latitude" form="tag-form" id="in_latitude"
                         value=49.01379
                         placeholder="e.g. 49.01379"
                         pattern="(-?\d+)(\.\d+)?"
                         minlength=1
                         required
-                        disabled>
+                        readonly>
 
                     <label form="tag-form">Longitude:</label>
-                    <input type="text" form="tag-form" id="in_longitude" 
+                    <input type="text" name="longitude" form="tag-form" id="in_longitude" 
                         placeholder="e.g. 8.390071"
                         value=8.390071
                         pattern="(-?\d+)(\.\d+)?"
                         minlength=1
                         required
-                        disabled>
+                        readonly>
 
                     <label form="tag-form">Name:</label>
-                    <input type="text" form="tag-form" id="in_name" 
+                    <input type="text" name="name" form="tag-form" id="in_name" 
                         placeholder="e.g. Central Berlin"
                         pattern="[a-zA-Z]+"
                         minlength=1
@@ -58,7 +58,7 @@
                         required>
              
                     <label form="tag-form">Hashtag:</label>
-                    <input type="text" form="tag-form" id="in_hashtag" 
+                    <input type="text" name="hashtag" form="tag-form" id="in_hashtag" 
                         placeholder="e.g. #ber"
                         pattern="#[a-zA-Z]+"
                         minlength=0
@@ -78,14 +78,13 @@
                 <fieldset class="main__discovery__fieldset">
                     <legend>Search</legend>
                     <label form="discovery__search">Search term or keywords:</label>
-                    <input type="text" form="discovery__search" id="in_search_key" 
+                    <input type="text" form="discovery__search" name="search_key" 
                         placeholder="e.g. Berlin"
-                        pattern="#?[a-z]+"
                         minlength=1
                         required>
 
-                    <input type="text" form="discovery__search" id="search_latitude" hidden>
-                    <input type="text" form="discovery__search" id="search_longitude" hidden>
+                    <input type="text" name="discoverylatitude" form="discovery__search" id="search_latitude" hidden>
+                    <input type="text" name="discoverylongitude" form="discovery__search" id="search_longitude" hidden>
                     <input type="submit" value="Search">
                 </fieldset>
             </form>

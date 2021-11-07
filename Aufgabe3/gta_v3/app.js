@@ -16,6 +16,7 @@ const path = require('path');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
+const GeoTagMemory = require('./models/geotag-store');
 
 /**
  * Set up Express app.
@@ -31,6 +32,8 @@ app.set('view engine', 'ejs');
 
 // Set logger
 app.use(logger('dev'));
+
+app.set('memory', new GeoTagMemory());
 
 // Set content processing
 app.use(express.json());

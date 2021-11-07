@@ -36,9 +36,9 @@ class GeoTag {
     }
 
     constructor(latitude, longitude, name, hashtag) {
-        this.#name = name;
         this.#latitude = latitude;
         this.#longitude = longitude;
+        this.#name = name;
         this.#hashtag = hashtag;
     }
 }

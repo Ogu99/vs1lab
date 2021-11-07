@@ -26,10 +26,14 @@ const GeoTag = require("./geotag");
  * - Keyword matching should include partial matches from name or hashtag fields. 
  */
 
- const radius = 5; //5 km radius to search for nearby locations.
+const radius = 5; //5 km radius to search for nearby locations.
 
 class InMemoryGeoTagStore {
     #geotags = [];
+
+    get geotags() {
+        return this.#geotags;
+    }
 
     /**
      * Adds the given geotag to the storage.
@@ -55,13 +59,15 @@ class InMemoryGeoTagStore {
     /**
      * Gets all tags in a range of 5km around the given location and returns them.
      * 
-     * @param {*} location the location to search around.
+     * @param {*} latitude the latitude of the location.
+     * @param {*} longitude the longitude of the location.
      * @returns all tags in an estimated radius of 5km around the location.
      */
-    getNearbyGeoTags(location) {
-        inRange = [];
+    getNearbyGeoTags(latitude, longitude) {
+        var inRange = [];
         for (const tag of this.#geotags) {
-            distance = this.getDistanceFromLatLonInKm(location.latitude, location.longitude, tag.latitude, tag.longitude);
+            var distance = this.getDistanceFromLatLonInKm(latitude, longitude, tag.latitude, tag.longitude);
+            console.log("The distance is " + distance);
             if (distance <= radius) {
                 inRange.push(tag);
             }
@@ -74,17 +80,22 @@ class InMemoryGeoTagStore {
      * Gets all tags in a range of 5km around the given location which match a given
      * keyword and returns them.
      * 
-     * @param {*} location the location to search around.
+     * @param {*} latitude the latitude of the location.
+     * @param {*} longitude the longitude of the location.
      * @param {*} keyword the keyword to search for.
      * @returns all tags in an estimated radius of 5km around the location which
      *          match the given keyword.
      */
-    searchNearbyGeoTags(location, keyword) {
-        inRange = this.getNearbyGeoTags(location);
-        matching = [];
+    searchNearbyGeoTags(latitude, longitude, keyword) {
+        var inRange = this.getNearbyGeoTags(latitude, longitude);
+        var matching = [];
+
+        if (keyword == undefined) {
+            return inRange;
+        }
 
         for (const tag of inRange) {
-            if (tag.name.includes(keyword) || tag.hashtag.includes(keyword)) {
+            if (tag.name.contains(keyword) || tag.hashtag.contains(keyword)) {
                 matching.push(tag);
             }
         }
@@ -92,22 +103,22 @@ class InMemoryGeoTagStore {
         return matching;
     }
 
+    deg2rad(deg) {
+        return deg * (Math.PI/180)
+    }
+
     getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
         var R = 6371; // Radius of the earth in km
-        var dLat = deg2rad(lat2-lat1);  // deg2rad below
-        var dLon = deg2rad(lon2-lon1); 
+        var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
+        var dLon = this.deg2rad(lon2-lon1); 
         var a = 
           Math.sin(dLat/2) * Math.sin(dLat/2) +
-          Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+          Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
           Math.sin(dLon/2) * Math.sin(dLon/2)
           ; 
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
         var d = R * c; // Distance in km
         return d;
-    }
-      
-    deg2rad(deg) {
-        return deg * (Math.PI/180)
     }
 }
 
