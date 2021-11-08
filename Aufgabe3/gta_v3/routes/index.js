@@ -66,7 +66,7 @@ router.get('/', (req, res) => {
  * To this end, "GeoTagStore" provides a method to search geotags 
  * by radius around a given location.
  */
-router.use(express.urlencoded({ extended: true }))
+//router.use(express.urlencoded({ extended: true }))
 
 router.post('/tagging', (req, res) => {
   var latitude = req.body.latitude;
@@ -96,7 +96,7 @@ router.post('/tagging', (req, res) => {
  * by radius and keyword.
  */
 router.post('/discovery', (req, res) => {
-  res.send(req.body.search_key);
+  res.render('index', { taglist: [] }); 
 });
 
 
