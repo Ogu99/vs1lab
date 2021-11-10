@@ -96,7 +96,12 @@ router.post('/tagging', (req, res) => {
  * by radius and keyword.
  */
 router.post('/discovery', (req, res) => {
-  res.render('index', { taglist: [] }); 
+  var latitude = req.body.d_latitude;
+  var longitude = req.body.d_longitude;
+  var name = req.body.search_key;
+
+
+  res.render('index', { taglist: req.app.get('memory').searchNearbyGeoTags(latitude, longitude, name) });
 });
 
 

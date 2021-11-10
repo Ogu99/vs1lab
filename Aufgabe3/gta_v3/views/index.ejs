@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoTagApp</title>
     <link rel="stylesheet" href="./stylesheets/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./javascripts/geotagging.js"></script>
 </head>
@@ -77,14 +76,14 @@
                 <h2>Discovery</h2>
                 <fieldset class="main__discovery__fieldset">
                     <legend>Search</legend>
-                    <label form="discovery__search">Search term or keywords:</label>
-                    <input type="text" form="discovery__search" name="search_key" 
+                    <label form="discoveryFilterForm">Search term or keywords:</label>
+                    <input type="text" form="discoveryFilterForm" name="search_key" 
                         placeholder="e.g. Berlin"
                         minlength=1
                         required>
 
-                    <input type="text" name="d_latitude" form="discovery__search" id="search_latitude" hidden>
-                    <input type="text" name="d_longitude" form="discovery__search" id="search_longitude" hidden>
+                    <input type="text" name="d_latitude" form="discoveryFilterForm" id="search_latitude" hidden>
+                    <input type="text" name="d_longitude" form="discoveryFilterForm" id="search_longitude" hidden>
                     <input type="submit" value="Search">
                 </fieldset>
             </form>

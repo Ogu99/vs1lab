@@ -67,7 +67,6 @@ class InMemoryGeoTagStore {
         var inRange = [];
         for (const tag of this.#geotags) {
             var distance = this.getDistanceFromLatLonInKm(latitude, longitude, tag.latitude, tag.longitude);
-            console.log("The distance is " + distance);
             if (distance <= radius) {
                 inRange.push(tag);
             }
@@ -88,14 +87,12 @@ class InMemoryGeoTagStore {
      */
     searchNearbyGeoTags(latitude, longitude, keyword) {
         var inRange = this.getNearbyGeoTags(latitude, longitude);
+        console.log("In range " + inRange);
         var matching = [];
 
-        if (keyword == undefined) {
-            return inRange;
-        }
-
         for (const tag of inRange) {
-            if (tag.name.contains(keyword) || tag.hashtag.contains(keyword)) {
+            if (tag.name.toLowerCase().indexOf(keyword.toLowerCase()) > -1 || tag.hashtag.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
+                console.log("Matching " + tag.name);
                 matching.push(tag);
             }
         }
