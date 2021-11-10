@@ -49,7 +49,17 @@ router.get('/', (req, res) => {
       req.app.get('memory').addGeoTag(addTag);
   }
 
-  res.render('index', { taglist: req.app.get('memory').geotags })
+  var t_lat = req.body.latitude;
+  var t_long = req.body.longitude;
+
+  var d_lat = req.body.d_latitude;
+  var d_long = req.body.d_longitude;
+
+  res.render('index', { taglist: req.app.get('memory').geotags, 
+    tagging_latitude : t_lat, 
+    tagging_longitude : t_long,
+    discovery_latitude : d_lat,
+    discovery_longitude : d_long})
 });
 
 /**
