@@ -84,10 +84,18 @@ router.post('/tagging', (req, res) => {
   var name = req.body.name;
   var hashtag = req.body.hashtag;
 
+  var d_lat = req.body.d_latitude;
+  var d_long = req.body.d_longitude;
+
   var tag = new GeoTag(latitude, longitude, name, hashtag);
   req.app.get('memory').addGeoTag(tag);
 
-  res.render('index', { taglist: req.app.get('memory').getNearbyGeoTags(latitude, longitude) });  
+  res.render('index', { taglist: req.app.get('memory').getNearbyGeoTags(latitude, longitude),
+    tagging_latitude : latitude, 
+    tagging_longitude : longitude,
+    discovery_latitude : d_lat,
+    discovery_longitude : d_long
+  });  
 });
 
 /**
@@ -110,8 +118,15 @@ router.post('/discovery', (req, res) => {
   var longitude = req.body.d_longitude;
   var name = req.body.search_key;
 
+  var t_latitude = req.body.latitude;
+  var t_longitude = req.body.longitude;
 
-  res.render('index', { taglist: req.app.get('memory').searchNearbyGeoTags(latitude, longitude, name) });
+  res.render('index', { taglist: req.app.get('memory').searchNearbyGeoTags(latitude, longitude, name),
+      tagging_latitude : t_latitude, 
+      tagging_longitude : t_longitude,
+      discovery_latitude : latitude,
+      discovery_longitude : longitude
+  });
 });
 
 
