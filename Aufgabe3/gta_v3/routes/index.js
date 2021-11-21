@@ -44,22 +44,20 @@ const GeoTagStore = require('../models/geotag-store');
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  for (const tag of tagList) {
-      addTag = new GeoTag(tag[1], tag[2], tag[0], tag[3]);
-      req.app.get('memory').addGeoTag(addTag);
-  }
 
   var t_lat = req.body.latitude;
   var t_long = req.body.longitude;
 
-  var d_lat = req.body.d_latitude;
-  var d_long = req.body.d_longitude;
+  var tags = req.app.get('memory').geotags;
+  var tags_S = JSON.stringify(tags);
 
-  res.render('index', { taglist: req.app.get('memory').geotags, 
+  res.render('index', { 
+    taglist: tags,
+    img_taglist: tags_S, 
     tagging_latitude : t_lat, 
     tagging_longitude : t_long,
-    discovery_latitude : d_lat,
-    discovery_longitude : d_long})
+    discovery_latitude : t_lat,
+    discovery_longitude : t_long})
 });
 
 /**
@@ -76,25 +74,25 @@ router.get('/', (req, res) => {
  * To this end, "GeoTagStore" provides a method to search geotags 
  * by radius around a given location.
  */
-//router.use(express.urlencoded({ extended: true }))
-
 router.post('/tagging', (req, res) => {
   var latitude = req.body.latitude;
   var longitude = req.body.longitude;
   var name = req.body.name;
   var hashtag = req.body.hashtag;
 
-  var d_lat = req.body.d_latitude;
-  var d_long = req.body.d_longitude;
-
   var tag = new GeoTag(latitude, longitude, name, hashtag);
   req.app.get('memory').addGeoTag(tag);
 
-  res.render('index', { taglist: req.app.get('memory').getNearbyGeoTags(latitude, longitude),
+  var tags = req.app.get('memory').getNearbyGeoTags(latitude, longitude);
+  var tags_S = JSON.stringify(GeoTagStore.toObj(tags));
+
+  res.render('index', { 
+    taglist: tags,
+    img_taglist: tags_S,
     tagging_latitude : latitude, 
     tagging_longitude : longitude,
-    discovery_latitude : d_lat,
-    discovery_longitude : d_long
+    discovery_latitude : latitude,
+    discovery_longitude : longitude
   });  
 });
 
@@ -118,12 +116,14 @@ router.post('/discovery', (req, res) => {
   var longitude = req.body.d_longitude;
   var name = req.body.search_key;
 
-  var t_latitude = req.body.latitude;
-  var t_longitude = req.body.longitude;
+  var tags = req.app.get('memory').searchNearbyGeoTags(latitude, longitude, name);
+  var tags_S = JSON.stringify(GeoTagStore.toObj(tags));
 
-  res.render('index', { taglist: req.app.get('memory').searchNearbyGeoTags(latitude, longitude, name),
-      tagging_latitude : t_latitude, 
-      tagging_longitude : t_longitude,
+  res.render('index', { 
+      taglist: tags,
+      img_taglist: tags_S,
+      tagging_latitude : latitude, 
+      tagging_longitude : longitude,
       discovery_latitude : latitude,
       discovery_longitude : longitude
   });

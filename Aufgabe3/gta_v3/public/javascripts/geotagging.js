@@ -17,9 +17,11 @@ console.log("The geoTagging script is going to start...");
 function updateLocation() {
 
     var lat = document.getElementById("in_latitude").value;
-    var lon = document.getElementById("in_longitude").value;  
+    var lon = document.getElementById("in_longitude").value;
+    var d_lat = document.getElementById("search_latitude").value;
+    var d_lon = document.getElementById("search_longitude").value;
     
-    if ((lat == null || lat.length == 0) || (lon == null || lon.length == 0)) {
+    if ((lat == null || lat.length == 0) || (lon == null || lon.length == 0) && (d_lat == null || d_lat.length == 0) || (d_lon == null || d_lon.length == 0)) {
 
         var set = function(location) {
             let latitude = location.latitude;
@@ -30,7 +32,10 @@ function updateLocation() {
             document.getElementById("search_latitude").setAttribute('value', latitude);
             document.getElementById("search_longitude").setAttribute('value', longitude);
 
-            setMap(latitude, longitude);
+            let map = new MapManager('Fkc6hFHf8lS9AHGTNSrAERPJsXhgq2c4');
+            let url = map.getMapUrl(latitude, longitude);
+
+            document.getElementById('mapView').setAttribute('src', url);
         }
 
         LocationHelper.findLocation(set);
@@ -41,8 +46,13 @@ function updateLocation() {
 }
 
 function setMap(lat, lon) {
+    var tags = document.getElementById("mapView").getAttribute('data-tags');
+    var geotags = JSON.parse(tags);
+
+    console.log(geotags);
+
     let map = new MapManager('Fkc6hFHf8lS9AHGTNSrAERPJsXhgq2c4');
-    let url = map.getMapUrl(lat, lon);
+    let url = map.getMapUrl(lat, lon, geotags);
 
     document.getElementById('mapView').setAttribute('src', url);
 }

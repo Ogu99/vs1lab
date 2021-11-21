@@ -41,6 +41,13 @@ class GeoTag {
         this.#name = name;
         this.#hashtag = hashtag;
     }
+
+    toObj() {
+        return {latitude : this.latitude, 
+                longitude : this.longitude, 
+                name : this.name, 
+                hashtag : this.hashtag};
+    }
 }
 
 module.exports = GeoTag;

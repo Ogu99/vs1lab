@@ -31,8 +31,23 @@ const radius = 5; //5 km radius to search for nearby locations.
 class InMemoryGeoTagStore {
     #geotags = [];
 
+    constructor (taglist = []) {
+        for (var tag of taglist) {
+            var addTag = new GeoTag(tag[1], tag[2], tag[0], tag[3]);
+            this.addGeoTag(addTag);
+        }
+    }
+
     get geotags() {
         return this.#geotags;
+    }
+
+    static toObj(taglist) {
+        var obj = [];
+        for (var tag of taglist) {
+            obj.push(tag.toObj());
+        }
+        return obj;
     }
 
     /**

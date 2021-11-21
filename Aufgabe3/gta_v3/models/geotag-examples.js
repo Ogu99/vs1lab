@@ -1,5 +1,7 @@
 // File origin: VS1LAB A3
 
+const GeoTag = require("./geotag");
+
 /**
  * This script is a template for exercise VS1lab/Aufgabe3
  * Complete all TODOs in the code documentation.
@@ -29,6 +31,15 @@ class GeoTagExamples {
             ['Building B', 49.016843, 8.391372, '#campus'],
             ['Building K', 49.013190, 8.392090, '#campus'],
         ];
+    }
+
+    static get toTagObj() {
+        var tags = [];
+        for (var tag of this.tagList) {
+            var add = new GeoTag(tag[1], tag[2], tag[0], tag[3]);
+            tags.push(add);
+        }
+        return tags;
     }
 }
 
